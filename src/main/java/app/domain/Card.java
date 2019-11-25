@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.Date;
 
 @Entity
 @Getter @Setter
@@ -16,7 +15,7 @@ public class Card {
     public Card() {
     }
 
-    public Card(String number, String holder, Date issueDate) {
+    public Card(String number, String holder, String issueDate) {
         this.number = number;
         this.holder = holder;
         this.issueDate = issueDate;
@@ -28,6 +27,6 @@ public class Card {
 
     private String number;
     private String holder;
-    private Date issueDate;
+    private String issueDate;
 
 }

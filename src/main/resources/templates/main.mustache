@@ -6,14 +6,22 @@
 </head>
 <body>
 <div>
+    <h2>Добавление карты</h2>
     <form method="post">
-        <input type="text" name="name" placeholder="Имя">
-        <button type="submit">Добавить</button>
+        <input type="text" name="number" placeholder="Номер">
+        <input type="text" name="holder" placeholder="Держатель">
+        <input type="text" name="issueDate" placeholder="Дата выдачи">
+        <button type="submit">Добавить карту</button>
     </form>
 </div>
-<div>Список клиентов</div>
-    {{#clients}}
-        <p>{{name}}</p>
-    {{/clients}}
+<hr>
+<h2>Список карт</h2>
+    {{#cards}}
+        <p>
+            <b>{{number}}</b>
+            <i>{{holder}}</i>
+            <span>{{issueDate}}</span>
+        </p>
+    {{/cards}}
 </body>
 </html>
