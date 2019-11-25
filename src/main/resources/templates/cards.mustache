@@ -14,9 +14,9 @@
     <h2>Добавление карты</h2>
     <div id="error">{{error}}</div>
     <form method="post">
-        <input type="text" name="number" placeholder="Номер">
-        <input type="text" name="holder" placeholder="Держатель">
-        <input type="text" name="issueDate" placeholder="Дата выдачи">
+        <input type="text" required name="number" placeholder="Номер">
+        <input type="text" required name="holder" placeholder="Держатель">
+        <input type="date" required name="issueDate" placeholder="Дата выдачи">
         <button type="submit">Добавить карту</button>
     </form>
 </div>

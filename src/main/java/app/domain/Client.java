@@ -15,13 +15,17 @@ public class Client {
     public Client() {
     }
 
-    public Client(String name) {
-        this.name = name;
+    public Client(String firstname, String lastname, String midname) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.midname = midname;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    private String name;
+    private String firstname;
+    private String lastname;
+    private String midname;
 }
