@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
+import java.util.regex.Pattern;
 
 @Controller
 public class CardController {
@@ -24,6 +25,7 @@ public class CardController {
     public String main(Map<String, Object> model) {
         Iterable<Card> cards = cardRepo.findAll();
         model.put("cards", cards);
+        model.put("error", "");
         return "main";
     }
 
@@ -32,10 +34,22 @@ public class CardController {
                       @RequestParam String holder,
                       @RequestParam String issueDate,
                       Map<String, Object> model) {
+
+        Iterable<Card> cards = cardRepo.findAll();
+
+        Pattern pattern = Pattern.compile("\\d{16}");
+
+
+        if (!pattern.matcher(number).matches()) {
+            model.put("error", "Ошибочка, братан, нужно ввести 16 цифр");
+            return "main";
+        }
+
         Card card = new Card(number, holder, issueDate);
         cardRepo.save(card);
-        Iterable<Card> cards = cardRepo.findAll();
+
         model.put("cards", cards);
+        model.put("error", "");
         return "main";
     }
 
