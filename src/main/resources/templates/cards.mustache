@@ -26,8 +26,25 @@
         <p>
             <b>{{number}}</b>
             <i>{{holder}}</i>
-            <span>{{issueDate}}</span>
+            <span class="issue">{{issueDate}}</span>
+            <button class="steal">Списать деньги</button>
         </p>
     {{/cards}}
+<script>
+    // function steal() {
+    //     var issue = document.getElementById('issue').innerText;
+    //     alert('Деньги списаны! Дата действия карты' + issue);
+    // }
+
+
+    var stealList = document.getElementsByClassName('steal');
+
+    for (var i = 0; i < stealList.length; i++) {
+        stealList[i].addEventListener('click', event);
+    }
+    function event(){
+        alert(document.getElementsByClassName('steal')[0].previousElementSibling.innerText);
+    }
+</script>
 </body>
 </html>
