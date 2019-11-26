@@ -1,30 +1,18 @@
 package app.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-@Getter @Setter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Client {
-
-    public Client() {
-    }
-
-    public Client(String firstname, String lastname, String midname) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.midname = midname;
-    }
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-
     private String firstname;
     private String lastname;
     private String midname;
