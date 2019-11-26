@@ -2,6 +2,7 @@ package app.controller;
 
 import app.domain.Card;
 import app.repos.CardRepo;
+import javassist.bytecode.DuplicateMemberException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
@@ -32,9 +33,10 @@ public class CardController {
     public String addCard(@Valid @Pattern(regexp = "\\d{16}") @RequestParam String number,
                           @RequestParam String holder,
                           @RequestParam String issueDate,
-                          Map<String, Object> model) {
+                          Map<String, Object> model) throws DuplicateMemberException {
 
-        if (cardRepo.findByNumber(number) != null) return "error";
+        if (cardRepo.findByNumber(number) != null)
+            throw new DuplicateMemberException("Duplicate card");
 
         cardRepo.save(new Card(number, holder, issueDate));
         Iterable<Card> cards = cardRepo.findAll();
