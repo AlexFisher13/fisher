@@ -31,19 +31,26 @@
         </p>
     {{/cards}}
 <script>
-    // function steal() {
-    //     var issue = document.getElementById('issue').innerText;
-    //     alert('Деньги списаны! Дата действия карты' + issue);
-    // }
-
-
     var stealList = document.getElementsByClassName('steal');
 
     for (var i = 0; i < stealList.length; i++) {
         stealList[i].addEventListener('click', event);
     }
+
     function event(){
-        alert(document.getElementsByClassName('steal')[0].previousElementSibling.innerText);
+        var cardDate = this.previousElementSibling.innerText;
+        validateDate(cardDate);
+    }
+
+    function validateDate(value) {
+        var arrD = value.split("-");
+        arrD[1] -= 1;
+        var date = new Date(arrD[0], arrD[1], arrD[2]);
+        if (date > new Date()) {
+            alert('Деньги Списаны! Карта актвная до ' + date);
+        } else {
+            alert('Ссори, карта просрочена ' + date);
+        }
     }
 </script>
 </body>

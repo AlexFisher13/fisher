@@ -33,7 +33,7 @@ public class CardController {
 
         Pattern pattern = Pattern.compile("\\d{16}");
         if (!pattern.matcher(number).matches()) {
-            model.put("error", "Ошибочка, братан, нужно ввести 16 цифр");
+            model.put("error", "Ошибочка, братан, нужно ввести 16 цифр в поле номера карты");
             return "cards";
         }
 
